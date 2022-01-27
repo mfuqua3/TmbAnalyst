@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,6 +9,24 @@ namespace TmbAnalyst.Services.DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropIndex(
+                name: "IX_CharacterItems_CharacterId",
+                table: "CharacterItems");
+
+            migrationBuilder.DropColumn(
+                name: "Name",
+                table: "CharacterItems");
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Date",
+                table: "CharacterItems",
+                type: "timestamp with time zone",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                oldClrType: typeof(DateTime),
+                oldType: "timestamp with time zone",
+                oldNullable: true);
+
             migrationBuilder.InsertData(
                 table: "ItemSourceCategories",
                 columns: new[] { "Id", "Name" },
@@ -38,154 +57,132 @@ namespace TmbAnalyst.Services.DataAccess.Migrations
                 values: new object[,]
                 {
                     { 1, 1, "Doom Lord Kazzak", 0 },
-                    { 2, 1, "Doomwalker", 1 },
-                    { 3, 1, "Azuregos", 2 },
-                    { 4, 1, "Lord Kazzak", 3 },
-                    { 5, 1, "Dragons Shared", 4 },
-                    { 6, 1, "Emeriss", 5 },
-                    { 7, 1, "Lethon", 6 },
-                    { 8, 1, "Taerar", 7 },
-                    { 9, 1, "Ysondre", 8 },
-                    { 10, 2, "Trash", 0 },
-                    { 11, 2, "Recipes", 1 },
-                    { 12, 2, "Kalecgos", 2 },
-                    { 13, 2, "Brutallus", 3 },
-                    { 14, 2, "Felmyst", 4 },
-                    { 15, 2, "Eredar Twins", 5 },
-                    { 16, 2, "M'uru", 6 },
-                    { 17, 2, "Kil'Jaeden", 7 },
-                    { 18, 3, "Recipes", 0 },
-                    { 19, 3, "Timed Event", 1 },
-                    { 20, 3, "Nalorakk", 2 },
-                    { 21, 3, "Jan'alai", 3 },
-                    { 22, 3, "Akil'zon", 4 },
-                    { 23, 3, "Halazzi", 5 },
-                    { 24, 3, "Malacrass", 6 },
-                    { 25, 3, "Zul'jin", 7 },
-                    { 26, 4, "Trash", 0 },
-                    { 27, 4, "Recipes", 1 },
-                    { 28, 4, "Naj'entus", 2 },
-                    { 29, 4, "Supremus", 3 },
-                    { 30, 4, "Shade", 4 },
-                    { 31, 4, "Gorefiend", 5 },
-                    { 32, 4, "Gurtogg", 6 },
-                    { 33, 4, "Reliquary", 7 },
-                    { 34, 4, "Shahraz", 8 },
-                    { 35, 4, "Council", 9 },
-                    { 36, 4, "Illidan", 10 },
-                    { 37, 5, "Trash", 0 },
-                    { 38, 5, "Recipes", 1 },
-                    { 39, 5, "Winterchill", 2 },
-                    { 40, 5, "Anetheron", 3 },
-                    { 41, 5, "Kaz'rogal", 4 },
-                    { 42, 5, "Azgalor", 5 },
-                    { 43, 5, "Archimonde", 6 },
-                    { 44, 6, "Trash", 0 },
-                    { 45, 6, "Recipes", 1 },
-                    { 46, 6, "Al'ar", 2 },
-                    { 47, 6, "Void Reaver", 3 },
-                    { 48, 6, "Solarian", 4 },
-                    { 49, 6, "Kael'thas", 5 },
-                    { 50, 7, "Trash", 0 },
-                    { 51, 7, "Recipes", 1 },
-                    { 52, 7, "Hydross", 2 },
-                    { 53, 7, "Lurker Below", 3 },
-                    { 54, 7, "Leotheras", 4 },
-                    { 55, 7, "Karathress", 5 },
-                    { 56, 7, "Morogrim", 6 },
-                    { 57, 7, "Lady Vashj", 7 },
-                    { 58, 8, "Magtheridon", 0 },
-                    { 59, 9, "Maulgar", 0 },
-                    { 60, 9, "Gruul", 1 },
-                    { 61, 10, "Trash", 0 },
-                    { 62, 10, "Servants", 1 },
-                    { 63, 10, "Attumen", 2 },
-                    { 64, 10, "Moroes", 3 },
-                    { 65, 10, "Maiden", 4 },
-                    { 66, 10, "Opera Event", 5 },
-                    { 67, 10, "The Curator", 6 },
-                    { 68, 10, "Chess Event", 7 },
-                    { 69, 10, "Illhoof", 8 },
-                    { 70, 10, "Shade of Aran", 9 },
-                    { 71, 10, "Netherspite", 10 },
-                    { 72, 10, "Nightbane", 11 },
-                    { 73, 10, "Malchezaar", 12 },
-                    { 74, 11, "Tokens", 0 },
-                    { 75, 11, "Trash", 1 },
-                    { 76, 11, "Anub'Rekhan", 2 },
-                    { 77, 11, "Faerlina", 3 },
-                    { 78, 11, "Maexxna", 4 },
-                    { 79, 11, "Noth", 5 },
-                    { 80, 11, "Heigan", 6 },
-                    { 81, 11, "Loatheb", 7 },
-                    { 82, 11, "Razuvious", 8 },
-                    { 83, 11, "Gothik", 9 },
-                    { 84, 11, "Four Horsemen", 10 },
-                    { 85, 11, "Patchwerk", 11 },
-                    { 86, 11, "Grobbulus", 12 },
-                    { 87, 11, "Gluth", 13 },
-                    { 88, 11, "Thaddius", 14 },
-                    { 89, 11, "Sapphiron", 15 },
-                    { 90, 11, "Kel'Thuzad", 16 },
-                    { 91, 12, "Mounts", 0 },
-                    { 92, 12, "Enchants", 1 },
-                    { 93, 12, "Tokens", 2 },
-                    { 94, 12, "Trash", 3 },
-                    { 95, 12, "Skeram", 4 },
-                    { 96, 12, "Bug Trio", 5 },
-                    { 97, 12, "Sartura", 6 },
-                    { 98, 12, "Fankriss", 7 },
-                    { 99, 12, "Viscidus", 8 },
-                    { 100, 12, "Huhuran", 9 },
-                    { 101, 12, "Twin Emperors", 10 },
-                    { 102, 12, "Ouro", 11 },
-                    { 103, 12, "C'Thun", 12 },
-                    { 104, 13, "Enchants", 0 },
-                    { 105, 13, "Tokens", 1 },
-                    { 106, 13, "Trash", 2 },
-                    { 107, 13, "Kurinnaxx", 3 },
-                    { 108, 13, "General Rajaxx", 4 },
-                    { 109, 13, "Moam", 5 },
-                    { 110, 13, "Buru", 6 },
-                    { 111, 13, "Ayamiss", 7 },
-                    { 112, 13, "Ossirian", 8 },
-                    { 113, 14, "Tokens", 0 },
-                    { 114, 14, "Trash", 1 },
-                    { 115, 14, "Shared", 2 },
-                    { 116, 14, "Jeklik", 3 },
-                    { 117, 14, "Venoxis", 4 },
-                    { 118, 14, "Mar'li", 5 },
-                    { 119, 14, "Bloodlord", 6 },
-                    { 120, 14, "Edge of Madness", 7 },
-                    { 121, 14, "Thekal", 8 },
-                    { 122, 14, "Gahz'ranka", 9 },
-                    { 123, 14, "Arlokk", 10 },
-                    { 124, 14, "Jin'do", 11 },
-                    { 125, 14, "Hakkar", 12 },
-                    { 126, 15, "Trash", 0 },
-                    { 127, 15, "Razorgore", 1 },
-                    { 128, 15, "Vaelastrasz", 2 },
-                    { 129, 15, "Broodlord", 3 },
-                    { 130, 15, "Firemaw", 4 },
-                    { 131, 15, "Ebonroc", 5 },
-                    { 132, 15, "Flamegor", 6 },
-                    { 133, 15, "Drake Shared Loot", 7 },
-                    { 134, 15, "Chromaggus", 8 },
-                    { 135, 15, "Nefarian", 9 },
-                    { 136, 16, "Onyxia", 0 },
-                    { 137, 17, "Recipes", 0 },
-                    { 138, 17, "Trash", 1 },
-                    { 139, 17, "Shared", 2 },
-                    { 140, 17, "Lucifron", 3 },
-                    { 141, 17, "Magmadar", 4 },
-                    { 142, 17, "Gehennas", 5 },
-                    { 143, 17, "Garr", 6 },
-                    { 144, 17, "Shazzrah", 7 },
-                    { 145, 17, "Baron Geddon", 8 },
-                    { 146, 17, "Golemagg", 9 },
-                    { 147, 17, "Sulfuron", 10 },
-                    { 148, 17, "Majordomo", 11 },
-                    { 149, 17, "Ragnaros", 12 }
+                    { 2, 1, "Doomwalker", 0 },
+                    { 3, 2, "Trash", 0 },
+                    { 4, 2, "Recipes", 0 },
+                    { 5, 2, "Kalecgos", 0 },
+                    { 6, 2, "Brutallus", 0 },
+                    { 7, 2, "Felmyst", 0 },
+                    { 8, 2, "Eredar Twins", 0 },
+                    { 9, 2, "M'uru", 0 },
+                    { 10, 2, "Kil'Jaeden", 0 },
+                    { 11, 3, "Timed Event", 0 },
+                    { 12, 3, "Nalorakk", 0 },
+                    { 13, 3, "Jan'alai", 0 },
+                    { 14, 3, "Akil'zon", 0 },
+                    { 15, 3, "Halazzi", 0 },
+                    { 16, 3, "Malacrass", 0 },
+                    { 17, 3, "Zul'jin", 0 },
+                    { 18, 4, "Naj'entus", 0 },
+                    { 19, 4, "Supremus", 0 },
+                    { 20, 4, "Shade", 0 },
+                    { 21, 4, "Gorefiend", 0 },
+                    { 22, 4, "Gurtogg", 0 },
+                    { 23, 4, "Reliquary", 0 },
+                    { 24, 4, "Shahraz", 0 },
+                    { 25, 4, "Council", 0 },
+                    { 26, 4, "Illidan", 0 },
+                    { 27, 5, "Winterchill", 0 },
+                    { 28, 5, "Anetheron", 0 },
+                    { 29, 5, "Kaz'rogal", 0 },
+                    { 30, 5, "Azgalor", 0 },
+                    { 31, 5, "Archimonde", 0 },
+                    { 32, 6, "Al'ar", 0 },
+                    { 33, 6, "Void Reaver", 0 },
+                    { 34, 6, "Solarian", 0 },
+                    { 35, 6, "Kael'thas", 0 },
+                    { 36, 7, "Hydross", 0 },
+                    { 37, 7, "Lurker Below", 0 },
+                    { 38, 7, "Leotheras", 0 },
+                    { 39, 7, "Karathress", 0 },
+                    { 40, 7, "Morogrim", 0 },
+                    { 41, 7, "Lady Vashj", 0 },
+                    { 42, 8, "Magtheridon", 0 },
+                    { 43, 9, "Maulgar", 0 },
+                    { 44, 9, "Gruul", 0 },
+                    { 45, 10, "Servants", 0 },
+                    { 46, 10, "Attumen", 0 },
+                    { 47, 10, "Moroes", 0 },
+                    { 48, 10, "Maiden", 0 },
+                    { 49, 10, "Opera Event", 0 },
+                    { 50, 10, "The Curator", 0 },
+                    { 51, 10, "Chess Event", 0 },
+                    { 52, 10, "Illhoof", 0 },
+                    { 53, 10, "Shade of Aran", 0 },
+                    { 54, 10, "Netherspite", 0 },
+                    { 55, 10, "Nightbane", 0 },
+                    { 56, 10, "Malchezaar", 0 },
+                    { 57, 1, "Azuregos", 0 },
+                    { 58, 1, "Lord Kazzak", 0 },
+                    { 59, 1, "Dragons Shared", 0 },
+                    { 60, 1, "Emeriss", 0 },
+                    { 61, 1, "Lethon", 0 },
+                    { 62, 1, "Taerar", 0 },
+                    { 63, 1, "Ysondre", 0 },
+                    { 64, 11, "Tokens", 0 },
+                    { 65, 11, "Anub'Rekhan", 0 },
+                    { 66, 11, "Faerlina", 0 },
+                    { 67, 11, "Maexxna", 0 },
+                    { 68, 11, "Noth", 0 },
+                    { 69, 11, "Heigan", 0 },
+                    { 70, 11, "Loatheb", 0 },
+                    { 71, 11, "Razuvious", 0 },
+                    { 72, 11, "Gothik", 0 },
+                    { 73, 11, "Four Horsemen", 0 },
+                    { 74, 11, "Patchwerk", 0 },
+                    { 75, 11, "Grobbulus", 0 },
+                    { 76, 11, "Gluth", 0 },
+                    { 77, 11, "Thaddius", 0 },
+                    { 78, 11, "Sapphiron", 0 },
+                    { 79, 11, "Kel'Thuzad", 0 },
+                    { 80, 12, "Mounts", 0 },
+                    { 81, 12, "Enchants", 0 },
+                    { 82, 12, "Skeram", 0 },
+                    { 83, 12, "Bug Trio", 0 },
+                    { 84, 12, "Sartura", 0 },
+                    { 85, 12, "Fankriss", 0 },
+                    { 86, 12, "Viscidus", 0 },
+                    { 87, 12, "Huhuran", 0 },
+                    { 88, 12, "Twin Emperors", 0 },
+                    { 89, 12, "Ouro", 0 },
+                    { 90, 12, "C'Thun", 0 },
+                    { 91, 13, "Kurinnaxx", 0 },
+                    { 92, 13, "General Rajaxx", 0 },
+                    { 93, 13, "Moam", 0 },
+                    { 94, 13, "Buru", 0 },
+                    { 95, 13, "Ayamiss", 0 },
+                    { 96, 13, "Ossirian", 0 },
+                    { 97, 14, "Shared", 0 },
+                    { 98, 14, "Jeklik", 0 },
+                    { 99, 14, "Venoxis", 0 },
+                    { 100, 14, "Mar'li", 0 },
+                    { 101, 14, "Bloodlord", 0 },
+                    { 102, 14, "Edge of Madness", 0 },
+                    { 103, 14, "Thekal", 0 },
+                    { 104, 14, "Gahz'ranka", 0 },
+                    { 105, 14, "Arlokk", 0 },
+                    { 106, 14, "Jin'do", 0 },
+                    { 107, 14, "Hakkar", 0 },
+                    { 108, 15, "Razorgore", 0 },
+                    { 109, 15, "Vaelastrasz", 0 },
+                    { 110, 15, "Broodlord", 0 },
+                    { 111, 15, "Firemaw", 0 },
+                    { 112, 15, "Ebonroc", 0 },
+                    { 113, 15, "Flamegor", 0 },
+                    { 114, 15, "Drake Shared Loot", 0 },
+                    { 115, 15, "Chromaggus", 0 },
+                    { 116, 15, "Nefarian", 0 },
+                    { 117, 16, "Onyxia", 0 },
+                    { 118, 17, "Lucifron", 0 },
+                    { 119, 17, "Magmadar", 0 },
+                    { 120, 17, "Gehennas", 0 },
+                    { 121, 17, "Garr", 0 },
+                    { 122, 17, "Shazzrah", 0 },
+                    { 123, 17, "Baron Geddon", 0 },
+                    { 124, 17, "Golemagg", 0 },
+                    { 125, 17, "Sulfuron", 0 },
+                    { 126, 17, "Majordomo", 0 },
+                    { 127, 17, "Ragnaros", 0 }
                 });
 
             migrationBuilder.InsertData(
@@ -1829,119 +1826,19 @@ namespace TmbAnalyst.Services.DataAccess.Migrations
                     { 35292, 8, "Sin'dorei Pendant of Triumph" },
                     { 35733, 3, "Ring of Harmonic Beauty" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CharacterItems_CharacterId_ItemId_Type_Date",
+                table: "CharacterItems",
+                columns: new[] { "CharacterId", "ItemId", "Type", "Date" },
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 128);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 129);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 130);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 131);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 132);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 133);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 134);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 135);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 136);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 137);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 138);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 139);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 140);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 141);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 142);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 143);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 144);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 145);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 146);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 147);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 148);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSources",
-                keyColumn: "Id",
-                keyValue: 149);
+            migrationBuilder.DropIndex(
+                name: "IX_CharacterItems_CharacterId_ItemId_Type_Date",
+                table: "CharacterItems");
 
             migrationBuilder.DeleteData(
                 table: "Items",
@@ -10084,16 +9981,6 @@ namespace TmbAnalyst.Services.DataAccess.Migrations
                 keyValue: 35733);
 
             migrationBuilder.DeleteData(
-                table: "ItemSourceCategories",
-                keyColumn: "Id",
-                keyValue: 16);
-
-            migrationBuilder.DeleteData(
-                table: "ItemSourceCategories",
-                keyColumn: "Id",
-                keyValue: 17);
-
-            migrationBuilder.DeleteData(
                 table: "ItemSources",
                 keyColumn: "Id",
                 keyValue: 1);
@@ -10802,6 +10689,35 @@ namespace TmbAnalyst.Services.DataAccess.Migrations
                 table: "ItemSourceCategories",
                 keyColumn: "Id",
                 keyValue: 15);
+
+            migrationBuilder.DeleteData(
+                table: "ItemSourceCategories",
+                keyColumn: "Id",
+                keyValue: 16);
+
+            migrationBuilder.DeleteData(
+                table: "ItemSourceCategories",
+                keyColumn: "Id",
+                keyValue: 17);
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "Date",
+                table: "CharacterItems",
+                type: "timestamp with time zone",
+                nullable: true,
+                oldClrType: typeof(DateTime),
+                oldType: "timestamp with time zone");
+
+            migrationBuilder.AddColumn<string>(
+                name: "Name",
+                table: "CharacterItems",
+                type: "text",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CharacterItems_CharacterId",
+                table: "CharacterItems",
+                column: "CharacterId");
         }
     }
 }

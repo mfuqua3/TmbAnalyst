@@ -7,7 +7,7 @@ public class TmbCsvGuildItem
 {
     [Name("type")]
     public string Type { get; set; }
-    [Name("raid_group")]
+    [Name("raid_group_name")]
     public string RaidGroup { get; set; }
     [Name("member_name")]
     public string MemberName { get; set; }
@@ -15,24 +15,20 @@ public class TmbCsvGuildItem
     public string CharacterName { get; set; }
     [Name("character_class")]
     public string CharacterClass { get; set; }
-    [BooleanTrueValues("1")]
-    [BooleanFalseValues("0")]
     [Name("character_is_alt")]
-    public bool CharacterIsAlt { get; set; }
+    public string CharacterIsAlt { get; set; }
     [Name("character_inactive_at")]
     public DateTime? CharacterInactiveAt { get; set; }
     [Name("character_note")]
     public string CharacterNote { get; set; }
     [Name("sort_order")]
-    public string SortOrder { get; set; }
+    public int? SortOrder { get; set; }
     [Name("item_name")]
     public string ItemName { get; set; }
     [Name("item_id")]
     public int ItemId { get; set; }
-    [BooleanTrueValues("1")]
-    [BooleanFalseValues("0")]
     [Name("is_offspec")]
-    public bool IsOffspec { get; set; }
+    public string IsOffspec { get; set; }
     [Name("note")]
     public string Note { get; set; }
     [Name("received_at")]

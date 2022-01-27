@@ -2,7 +2,7 @@
 
 namespace TmbAnalyst.Services.Manager.Contracts;
 
-public interface IImportManager
+public interface IPreVoteManager
 {
-    Task ImportWishlistData(string rawImport);
+    Task<byte[]> GetPreVoteCsv();
 }

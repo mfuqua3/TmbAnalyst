@@ -1,0 +1,18 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "preserveConstEnums": true,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
+  }
+}

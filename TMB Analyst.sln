@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmbAnalyst.ClientApp.Razor", "TmbAnalyst.ClientApp.Razor\TmbAnalyst.ClientApp.Razor.csproj", "{501DB097-BBF5-4E32-96A8-B9CF498ADE71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmbAnalyst", "TmbAnalyst\TmbAnalyst.csproj", "{5EAE738A-B358-4EC7-ABE2-28BA5437B8B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TmbAnalyst.Services", "TmbAnalyst.Services\TmbAnalyst.Services.csproj", "{16734819-EE97-42F7-8BAE-CDC07BE6A2FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{501DB097-BBF5-4E32-96A8-B9CF498ADE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{501DB097-BBF5-4E32-96A8-B9CF498ADE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{501DB097-BBF5-4E32-96A8-B9CF498ADE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{501DB097-BBF5-4E32-96A8-B9CF498ADE71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EAE738A-B358-4EC7-ABE2-28BA5437B8B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EAE738A-B358-4EC7-ABE2-28BA5437B8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EAE738A-B358-4EC7-ABE2-28BA5437B8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EAE738A-B358-4EC7-ABE2-28BA5437B8B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16734819-EE97-42F7-8BAE-CDC07BE6A2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16734819-EE97-42F7-8BAE-CDC07BE6A2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16734819-EE97-42F7-8BAE-CDC07BE6A2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16734819-EE97-42F7-8BAE-CDC07BE6A2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

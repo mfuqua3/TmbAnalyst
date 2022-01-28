@@ -1,9 +1,14 @@
+using System;
+using System.Configuration;
+using Discord.OAuth2;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TmbAnalyst.Authentication;
 using TmbAnalyst.ClientApp.Razor.DependencyInjection;
 using TmbAnalyst.Middleware;
 using TmbAnalyst.Services.DataAccess;
@@ -31,10 +36,30 @@ namespace TmbAnalyst
                 opt.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddRazorClientApp(_webHostEnvironment);
+            services.Configure<DiscordOptions>(
+                DiscordDefaults.AuthenticationScheme,
+                _configuration.GetSection("Discord"));
+            services.Configure<DevelopmentOptions>(
+                _configuration.GetSection("Development"));
+
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultChallengeScheme = DiscordDefaults.AuthenticationScheme;
+                    x.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddCookie(x =>
+                    x.Events = new DiscordCookieAuthenticationEvents()
+                )
+                .AddDiscord(x =>
+                {
+                    x.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    x.Scope.Add("guilds");
+                });
+            services.AddAuthorization();
             services.AddOptions();
+            services.AddHttpContextAccessor();
             services.AddHealthChecks();
             services.AddCors();
-            services.Configure<DevelopmentOptions>(_configuration.GetSection("Development"));
             services.AddApplicationMiddleware();
             services.AddTmbAnalystCore();
             services.AddAutoMapper(typeof(ServicesRegistrar).Assembly);
@@ -47,6 +72,7 @@ namespace TmbAnalyst
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseExceptionHandling();
             app.UseHttpsRedirection();
             app.UseCors(opt =>

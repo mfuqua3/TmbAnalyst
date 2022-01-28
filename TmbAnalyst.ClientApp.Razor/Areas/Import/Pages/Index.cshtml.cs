@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TmbAnalyst.Services.DataContracts.Requests;
@@ -7,6 +8,7 @@ using TmbAnalyst.Services.Manager.Contracts;
 
 namespace TmbAnalyst.ClientApp.Razor.Areas.Import.Pages;
 
+[Authorize(Roles = "Admin,Developer")]
 public class Index : PageModel
 {
     private readonly IImportManager _importManager;

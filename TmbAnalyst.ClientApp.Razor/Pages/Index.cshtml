@@ -1,8 +1,5 @@
 ﻿@page
+@using System.Security.Claims
 @model Index
 
-<form method="post">
-    <label asp-for="RawImportString" class="form-control form-label"></label>
-    <textarea asp-for="RawImportString" class="form-control form-text"></textarea>
-    <button type="submit" class="btn btn-primary">SUBMIT ME</button>
-</form>
+Hello @User.FindFirstValue(ClaimTypes.Name)!

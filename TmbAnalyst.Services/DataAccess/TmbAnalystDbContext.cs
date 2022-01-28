@@ -17,6 +17,9 @@ public class TmbAnalystDbContext : DbContext
     public DbSet<ItemSource> ItemSources { get; set; }
     public DbSet<ItemSourceCategory> ItemSourceCategories { get; set; }
     
+    public DbSet<UserRole> UserRoles { get; set; }
+    public DbSet<Role> Roles { get; set; }
+
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {
         this.ProcessCustomInterfaces();

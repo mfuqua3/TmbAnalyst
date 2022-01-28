@@ -1,16 +1,18 @@
 ﻿<div class="top-nav bg-primary">
+    <If-Authorized roles="Admin,Developer">
+        <div>
+            <a class="btn text-white nav-link" asp-area="Import">
+                Import
+            </a>
+        </div>
+    </If-Authorized>
     <div>
-        <a class="btn text-black nav-link" asp-area="Import">
-            Import
-        </a>
-    </div>
-    <div>
-        <a class="btn text-black nav-link" href="#">
+        <a class="btn text-white nav-link" href="#">
             My Vote
         </a>
     </div>
     <div>
-        <a class="btn text-black nav-link" href="#">
+        <a class="btn text-white nav-link" href="#">
             Current Vote
         </a>
     </div>

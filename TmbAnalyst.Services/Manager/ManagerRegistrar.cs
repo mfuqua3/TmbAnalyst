@@ -8,6 +8,7 @@ public static class ManagerRegistrar
     public static void AddManagers(this IServiceCollection services)
     {
         services.AddScoped<IImportManager, ImportManager>()
-            .AddScoped<IPreVoteManager, PreVoteManager>();
+            .AddScoped<IPreVoteManager, PreVoteManager>()
+            .AddScoped<IUserManager, UserManager>();
     }
 }

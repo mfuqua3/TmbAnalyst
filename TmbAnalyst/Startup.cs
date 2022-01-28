@@ -41,7 +41,6 @@ namespace TmbAnalyst
                 _configuration.GetSection("Discord"));
             services.Configure<DevelopmentOptions>(
                 _configuration.GetSection("Development"));
-
             services.AddAuthentication(x =>
                 {
                     x.DefaultChallengeScheme = DiscordDefaults.AuthenticationScheme;
@@ -54,6 +53,7 @@ namespace TmbAnalyst
                 {
                     x.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     x.Scope.Add("guilds");
+                    x.SaveTokens = true;
                 });
             services.AddAuthorization();
             services.AddOptions();
@@ -72,7 +72,6 @@ namespace TmbAnalyst
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseExceptionHandling();
             app.UseHttpsRedirection();
             app.UseCors(opt =>
@@ -85,12 +84,12 @@ namespace TmbAnalyst
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/coffee", _ => throw new ServerIsTeapotException());
                 endpoints.MapHealthChecks("/health");
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

@@ -7,6 +7,7 @@ public static class EngineRegistrar
 {
     public static void AddEngines(this IServiceCollection services)
     {
-        services.AddScoped<ICharacterEngine, CharacterEngine>();
+        services.AddScoped<ICharacterEngine, CharacterEngine>()
+            .AddScoped<IVoteEngine, VoteEngine>();
     }
 }

@@ -19,6 +19,13 @@ public class TmbAnalystDbContext : DbContext
     
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<Role> Roles { get; set; }
+    
+    public DbSet<Vote> Votes { get; set; }
+    public DbSet<VoteItem> VoteItems { get; set; }
+    public DbSet<VoteItemCharacter> VoteItemCharacters { get; set; }
+    public DbSet<VoteItemUser> VoteItemUsers { get; set; }
+    public DbSet<VoteItemUserCharacter> VoteItemUserCharacters { get; set; }
+    public DbSet<VoteItemUserComment> VoteItemUserComments { get; set; }
 
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {

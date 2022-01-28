@@ -21,6 +21,9 @@ public static class RazorClientAppRegistrar
                     "../TmbAnalyst.ClientApp.Razor")));
                 opt.AdditionalReferencePaths.Add(assembly.Location);
             });
+        services.AddControllers()
+            .AddApplicationPart(Assembly.GetExecutingAssembly())
+            .AddControllersAsServices();
     }
 
     public static void UseClientAppStaticFiles(this IApplicationBuilder app)

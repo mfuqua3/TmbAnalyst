@@ -85,9 +85,12 @@
       <_ContentIncludedByDefault Remove="wwwroot\lib\jquery\LICENSE.txt" />
     </ItemGroup>
     <ItemGroup>
+      <TypeScriptCompile Include="Scripts\Components\CreatePreVoteModal.ts" />
       <TypeScriptCompile Include="Scripts\index.ts" />
+      <TypeScriptCompile Include="Scripts\Models\Core\VoteSummary.ts" />
       <TypeScriptCompile Include="Scripts\Models\Core\WishlistImportResultSummary.ts" />
       <TypeScriptCompile Include="Scripts\Models\index.ts" />
+      <TypeScriptCompile Include="Scripts\Models\Requests\CreateVoteRequest.ts" />
       <TypeScriptCompile Include="Scripts\Models\Requests\CreateWishlistImportRequest.ts" />
       <TypeScriptCompile Include="Scripts\Pages\Import.cshtml.ts" />
       <TypeScriptCompile Include="Scripts\Pages\Index.cshtml.ts" />

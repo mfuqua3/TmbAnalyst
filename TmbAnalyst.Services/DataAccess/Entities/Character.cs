@@ -8,4 +8,5 @@ public class Character : IUnique<int>, INamed
     public int Id { get; set; }
     public string Name { get; set; }
     public List<CharacterItem> CharacterItems { get; set; }
+    public List<VoteItemUserCharacter> VoteItemUserCharacters { get; set; }
 }

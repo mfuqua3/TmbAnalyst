@@ -12,8 +12,15 @@
         </a>
     </div>
     <div>
-        <a class="btn text-white nav-link" href="#">
+        <a class="btn text-white nav-link" asp-area="Vote" asp-page="Current">
             Current Vote
         </a>
     </div>
+    <If-Authorized roles="Admin,Developer">
+        <div>
+            <button type="button" class="btn text-white nav-link" id="nav-create-vote">
+                +
+            </button>
+        </div>
+    </If-Authorized>
 </div>

@@ -1,3 +1,4 @@
+import CreatePreVoteModal from "./Components/CreatePreVoteModal";
 import * as $ from "jquery";
 import * as jquery from "jquery";
 declare global {
@@ -13,3 +14,4 @@ import '@popperjs/core/lib/popper.js';
 import "./index.css";
 import * as bootstrap from "bootstrap";
 window.bootstrap = bootstrap;
+$(CreatePreVoteModal)

@@ -1,4 +1,5 @@
 ﻿import {Modal as BootstrapModal} from "bootstrap";
+import {setButtonLoading} from "./setButtonLoading";
 
 export interface ModalProps<T> {
     onSubmit?(args: T): void | Promise<void>;
@@ -16,11 +17,17 @@ function useModal<T>(selector: string, props?: ModalProps<T>): Modal<T> {
     const modal = new BootstrapModal(selector);
     $(selector + " " + ".modal-close").on("click", close);
     $(selector + " " + ".modal-submit").on("click", submit);
-    function submit() {
-        if(props?.onSubmit) {
-            props.onSubmit(instanceArgs);
+    async function submit() {
+        const {resolve} = setButtonLoading(`.modal-submit`);
+        try {
+            if(props?.onSubmit) {
+                await props.onSubmit(instanceArgs);
+            }
+            close();
         }
-        close();
+        finally {
+            resolve();
+        }
     }
     function open() {
         modal.show();

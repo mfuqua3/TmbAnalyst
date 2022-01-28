@@ -1,0 +1,12 @@
+﻿@{
+    var modalProps = new Modal("createPreVote")
+    {
+        Title = "Create New PreVote?",
+        SubmitText = "Create",
+        Content = new Partial()
+        {
+            Name = "_CreatePreVoteRequestPartial",
+        }
+    };
+}
+<partial name="_ModalPartial" model="modalProps"/>

@@ -443,7 +443,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 .editorconfig
-NurseStaffing.Presentation.WebApplication/wwwroot/dist/
-NurseStaffing.Presentation.WebApplication/logs/
 **/site/*
 TmbAnalyst.ClientApp.Razor/wwwroot/dist/

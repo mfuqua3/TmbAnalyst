@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = (env) => {
     const base = {
-        entry: glob.sync('./Scripts/{**/*.cshtml.ts,**/index.ts}' +
+        entry: glob.sync('./Scripts/{**/*.cshtml.ts, index.ts}' +
             '').reduce((obj, el) => {
             obj[path.parse(el).name] = el;
             return obj;

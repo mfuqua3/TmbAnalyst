@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using TmbAnalyst.Services.DataContracts.Models;
 
 namespace TmbAnalyst.Services.Manager.Contracts;
 
 public interface IImportManager
 {
-    Task ImportWishlistData(string rawImport);
+    Task<WishlistImportResultSummary> ImportWishlistData(string rawImport);
 }

@@ -1,0 +1,29 @@
+﻿@model Modal
+<div class="modal fade" id="@Model.Key" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="@(Model.Key + "_" + "modalTitle")">@Model?.Title</h5>
+        <button type="button" class="btn-close modal-close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        @if (Model?.Content != null)
+        {
+          if (Model.Content.UseFor)
+          {
+            <partial name="@Model.Content.Name" for="Content.Model"/>
+          }
+          else
+          {
+            <partial name="@Model.Content.Name" model="@Model.Content.Model"/>
+          }
+        }
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-close">@Model?.CloseText</button>
+        <button type="button" class="btn btn-primary modal-submit">@Model?.SubmitText</button>
+      </div>
+    </div>
+  </div>
+</div>

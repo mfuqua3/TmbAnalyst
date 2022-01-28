@@ -86,7 +86,17 @@
     </ItemGroup>
     <ItemGroup>
       <TypeScriptCompile Include="Scripts\index.ts" />
+      <TypeScriptCompile Include="Scripts\Models\Core\WishlistImportResultSummary.ts" />
+      <TypeScriptCompile Include="Scripts\Models\index.ts" />
+      <TypeScriptCompile Include="Scripts\Models\Requests\CreateWishlistImportRequest.ts" />
+      <TypeScriptCompile Include="Scripts\Pages\Import.cshtml.ts" />
       <TypeScriptCompile Include="Scripts\Pages\Index.cshtml.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\setButtonLoading.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\useAlert.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\useAxios.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\useModal.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\usePageHandler.ts" />
+      <TypeScriptCompile Include="Scripts\Shared\usePagination.ts" />
     </ItemGroup>
     <Target Name="NpmInstall" Inputs="package.json" Outputs="node_modules/.install-stamp">
         <Exec Command="npm ci" />

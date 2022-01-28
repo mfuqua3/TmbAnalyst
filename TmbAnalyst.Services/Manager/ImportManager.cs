@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TmbAnalyst.Services.DataAccess;
 using TmbAnalyst.Services.DataAccess.Entities;
+using TmbAnalyst.Services.DataContracts.Models;
 using TmbAnalyst.Services.Engine.Contracts;
 using TmbAnalyst.Services.Manager.Contracts;
 using TmbAnalyst.Services.Utilities.ThatsMyBis;
@@ -32,7 +33,7 @@ public class ImportManager : IImportManager
         _dbContext = dbContext;
     }
 
-    public async Task ImportWishlistData(string rawImport)
+    public async Task<WishlistImportResultSummary> ImportWishlistData(string rawImport)
     {
         var import = _tmbDataParser.ParseCsvGuildDataExport(rawImport);
         await _characterEngine.EnsureCreated(
@@ -65,5 +66,11 @@ public class ImportManager : IImportManager
             .ToList();
         await _dbContext.CharacterItems.BulkSynchronizeAsync(characterItems,
             opt => opt.ColumnPrimaryKeyExpression = x => new { x.CharacterId, x.ItemId, x.Type, x.Date });
+        return new WishlistImportResultSummary
+        {
+            CharacterCount = characterItems.GroupBy(x=>x.CharacterId).Count(),
+            ReceivedItemCount = characterItems.Count(x => x.Type==TmbDataConstants.ItemType.Received),
+            WishlistItemCount = characterItems.Count(x => x.Type==TmbDataConstants.ItemType.Wishlist),
+        };
     }
 }

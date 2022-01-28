@@ -12,7 +12,7 @@ public class PageScriptsTagHelper : TagHelper
 {
     private readonly bool _useDevServer;
     [HtmlAttributeNotBound] [ViewContext] public ViewContext ViewContext { get; set; }
-
+    public string Src { get; set; }
     public PageScriptsTagHelper(IOptions<DevelopmentOptions> options)
     {
         _useDevServer = options.Value.UseWebpackDevServer;
@@ -21,8 +21,17 @@ public class PageScriptsTagHelper : TagHelper
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         var directory = _useDevServer ? "http://localhost:9000" : "/dist";
-        var currentPage = ViewContext.RouteData.Values["page"].ToString();
+        var name = Src;
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            name = ViewContext.ViewData.ContainsKey("Script") ? 
+                ViewContext.ViewData["Script"] + "Page" :
+                ViewContext.RouteData.Values["page"] + "Page";
+        }
+        if (!name.StartsWith('/'))
+            name = '/' + name;
+        var scriptFile = $"{directory}{name}.js";
         output.TagName = "script";
-        output.Attributes.SetAttribute("src", $"{directory}{currentPage}Page.js");
+        output.Attributes.SetAttribute("src", scriptFile);
     }
 }

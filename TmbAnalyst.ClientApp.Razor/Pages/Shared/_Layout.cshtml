@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"]Automation</title>
-    <script type="text/javascript" src="~/dist/index.js" asp-append-version="true"></script>
+    <title>@ViewData["Title"]</title>
+    <Page-Scripts src="index"></Page-Scripts>
     <Page-Scripts></Page-Scripts>
 </head>
 <body>
-<div class="layout d-flex flex-column align-items-center">
+<div class="main-container">
+    <partial name="_TopNav"/>
     <div class="container flex-fill">
         @RenderBody()
     </div>
